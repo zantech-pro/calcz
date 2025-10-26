@@ -1,5 +1,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home3/igpadc56/calc.zantech.com.br 
-    - /bin/cp -R src/frontend/dist/seu-projeto/* $DEPLOYPATH
+    - /bin/cp -R src/frontend/* $DEPLOYPATH
     - /bin/cp -R src/backend/* $DEPLOYPATH
