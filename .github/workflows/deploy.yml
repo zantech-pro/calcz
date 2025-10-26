@@ -1,0 +1,36 @@
+name: CD - Deploy Angular para cPanel
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Faz checkout do código
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2️⃣ Configura Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # 3️⃣ Instala dependências e builda o Angular
+      - name: Instalar dependências e buildar
+        run: |
+          npm ci
+          npm run build -- --configuration production
+
+      # 4️⃣ Faz upload do build para o servidor cPanel via FTP
+      - name: Fazer deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/<nome-do-projeto>/
+          server-dir: public_html/
