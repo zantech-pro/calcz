@@ -34,7 +34,7 @@ jobs:
 
       # 5. Configurar e Sincronizar com a HostGator via Rsync/SSH
       - name: 🚀 Deploy to HostGator via Rsync
-        uses: burnett01/rsync-deployments@7.1 # Action popular para rsync
+        uses: burnett01/rsync-deployments@7.1.0 # Action popular para rsync
         with:
           # --- Configurações SSH (usando os Secrets) ---
           remote_host: ${{ secrets.SSH_HOST }}
