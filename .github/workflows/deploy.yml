@@ -31,11 +31,11 @@ jobs:
         run: npm ci
         working-directory: ${{ env.ANGULAR_APP_DIR }} # <-- CORREÇÃO: Executa npm ci em src/frontend/app
 
-      # 4. Fazer o Build de Produção do Angular
+      # 4. Fazer o Build de Produção do Angular (CORRIGIDO: npx ng build)
       - name: 🏗️ Build Angular App
-        run: npx build --configuration production
-        # O comando 'ng build' irá gerar sua build na pasta 'dist/nome-do-seu-projeto'
-        working-directory: ${{ env.ANGULAR_APP_DIR }} # <-- CORREÇÃO: Executa ng build em src/frontend/app
+        # Comando CORRETO: npx executa o binário 'ng' (Angular CLI)
+        run: npx ng build --configuration production
+        working-directory: ${{ env.ANGULAR_APP_DIR }} # Executa ng build em src/frontend/app
         # O comando 'ng build' irá gerar sua build na pasta 'src/frontend/app/dist/nome-do-seu-projeto'
 
       # 5. Configurar e Sincronizar com a HostGator via Rsync/SSH
