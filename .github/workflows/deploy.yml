@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.21.0' # Use a versão de Node que seu Angular exige
+          cache-dependency-path: src/frontend/app/package-lock.json
       
       # 3. Instalar dependências (ex: do package.json)
       - name: 📦 Install dependencies
