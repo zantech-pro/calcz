@@ -10,6 +10,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+     # Define o caminho base do projeto Angular (para não repetir)
+    env:
+      ANGULAR_APP_DIR: src/frontend/app
     
     steps:
       # 1. Checkout do código
@@ -21,16 +25,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.21.0' # Use a versão de Node que seu Angular exige
-          cache-dependency-path: src/frontend/app/package-lock.json
       
       # 3. Instalar dependências (ex: do package.json)
       - name: 📦 Install dependencies
         run: npm ci
+        working-directory: ${{ env.ANGULAR_APP_DIR }} # <-- CORREÇÃO: Executa npm ci em src/frontend/app
 
       # 4. Fazer o Build de Produção do Angular
       - name: 🏗️ Build Angular App
         run: ng build --configuration production
         # O comando 'ng build' irá gerar sua build na pasta 'dist/nome-do-seu-projeto'
+        working-directory: ${{ env.ANGULAR_APP_DIR }} # <-- CORREÇÃO: Executa ng build em src/frontend/app
+        # O comando 'ng build' irá gerar sua build na pasta 'src/frontend/app/dist/nome-do-seu-projeto'
 
       # 5. Configurar e Sincronizar com a HostGator via Rsync/SSH
       - name: 🚀 Deploy to HostGator via Rsync
@@ -48,7 +54,7 @@ jobs:
           # O caminho LOCAL da sua pasta dist. 
           # O '/' final é crucial para COPIAR O CONTEÚDO (os arquivos .js, .css, index.html)
           # Ajuste 'nome-do-seu-projeto' se for diferente (Ex: 'frontend-app')
-          path: src/frontend/app/dist/app/ 
+          path: ${{ env.ANGULAR_APP_DIR }}/dist/nome-do-seu-projeto/
           
           # O caminho REMOTO (public_html/ é a raiz do seu site)
           remote_path: '~/calc.zantech.com.br/' 
