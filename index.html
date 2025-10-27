@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando...</title>
+    <!-- Carrega o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        // Função para realizar o redirecionamento
+        function redirecionar() {
+            // CORREÇÃO: Mudado de 'replace()' para atribuição direta a 'href' 
+            // para contornar o erro 'URL não válida' em ambientes restritos (como iframes/sandboxes).
+            // O redirecionamento ocorrerá para o caminho absoluto '/browser/index.html'.
+            window.location.href = '/browser/index.html';
+        }
+
+        // Chama a função de redirecionamento imediatamente após o carregamento do DOM
+        document.addEventListener('DOMContentLoaded', redirecionar);
+    </script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+        <!-- Ícone simples de carregamento/redirecionamento -->
+        <svg class="w-12 h-12 text-blue-600 mx-auto mb-4 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        
+        <h1 class="text-2xl font-semibold text-gray-800 mb-2">Redirecionamento Automático</h1>
+        
+        <p class="text-gray-600 mb-6">Você está sendo redirecionado para a aplicação...</p>
+
+        <!-- Mensagem de fallback caso o JavaScript esteja desabilitado -->
+        <noscript>
+            <p class="text-red-600 mb-4 font-medium">Seu JavaScript está desabilitado.</p>
+            <a href="/browser/index.html" class="inline-block px-6 py-2 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-150 ease-in-out">
+                Clique Aqui para Continuar
+            </a>
+        </noscript>
+    </div>
+</body>
+</html>
