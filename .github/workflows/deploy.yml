@@ -54,7 +54,7 @@ jobs:
           # O caminho LOCAL da sua pasta dist. 
           # O '/' final é crucial para COPIAR O CONTEÚDO (os arquivos .js, .css, index.html)
           # Ajuste 'nome-do-seu-projeto' se for diferente (Ex: 'frontend-app')
-          path: ${{ env.ANGULAR_APP_DIR }}/dist/nome-do-seu-projeto/
+          path: ${{ env.ANGULAR_APP_DIR }}/dist/app/
           
           # O caminho REMOTO (public_html/ é a raiz do seu site)
           remote_path: '~/calc.zantech.com.br/' 
