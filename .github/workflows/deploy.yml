@@ -1,36 +1,59 @@
-name: CD - Deploy Angular para cPanel
+name: Deploy Angular + PHP via rsync
 
+# O deploy será disparado sempre que houver um push para a branch 'main' (ou 'master')
 on:
   push:
-    branches: [ main ]
+    branches:
+      # - main # Descomente se sua branch principal for main
+      - master # Descomente se sua branch principal for master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      # 1️⃣ Faz checkout do código
-      - name: Checkout do código
+      # 1. Checkout do código
+      - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      # 2️⃣ Configura Node.js
-      - name: Configurar Node.js
+      # 2. Instalar Node.js e Angular CLI
+      - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22.21.0' # Use a versão de Node que seu Angular exige
+          cache: 'npm'
+      
+      # 3. Instalar dependências (ex: do package.json)
+      - name: 📦 Install dependencies
+        run: npm ci
 
-      # 3️⃣ Instala dependências e builda o Angular
-      - name: Instalar dependências e buildar
-        run: |
-          npm ci
-          npm run build -- --configuration production
+      # 4. Fazer o Build de Produção do Angular
+      - name: 🏗️ Build Angular App
+        run: ng build --configuration production
+        # O comando 'ng build' irá gerar sua build na pasta 'dist/nome-do-seu-projeto'
 
-      # 4️⃣ Faz upload do build para o servidor cPanel via FTP
-      - name: Fazer deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # 5. Configurar e Sincronizar com a HostGator via Rsync/SSH
+      - name: 🚀 Deploy to HostGator via Rsync
+        uses: burnett01/rsync-deployments@7.1 # Action popular para rsync
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/<nome-do-projeto>/
-          server-dir: public_html/
+          # --- Configurações SSH (usando os Secrets) ---
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+          # A HostGator Compartilhada geralmente usa a porta 2222
+          remote_port: 2222
+          
+          # --- Configurações Rsync/Deploy ---
+          # O caminho LOCAL da sua pasta dist. 
+          # O '/' final é crucial para COPIAR O CONTEÚDO (os arquivos .js, .css, index.html)
+          # Ajuste 'nome-do-seu-projeto' se for diferente (Ex: 'frontend-app')
+          path: src/frontend/app/dist/app/ 
+          
+          # O caminho REMOTO (public_html/ é a raiz do seu site)
+          remote_path: '~/calc.zantech.com.br/' 
+          
+          # Opções do Rsync: 
+          # -avz (archive, verbose, compress) 
+          # --delete (Apaga arquivos no destino que não existem mais na origem)
+          switches: -avzr --delete

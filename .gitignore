@@ -1,0 +1,16 @@
+# Angula
+
+src/frontend/app/.angular
+src/frontend/app/.vscode
+src/frontend/app/node_modules
+src/frontend/app/public
+src/frontend/app/src
+src/frontend/app/.editorconfig
+src/frontend/app/.gitignore
+src/frontend/app/angular.json
+src/frontend/app/package-lock.json
+src/frontend/app/package.json
+src/frontend/app/readme.md
+src/frontend/app/tsconfig.app.json
+src/frontend/app/tsconfig.json
+src/frontend/app/tsconfig.spec.json
