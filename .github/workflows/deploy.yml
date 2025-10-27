@@ -33,7 +33,7 @@ jobs:
 
       # 4. Fazer o Build de Produção do Angular
       - name: 🏗️ Build Angular App
-        run: ng build --configuration production
+        run: ngx build --configuration production
         # O comando 'ng build' irá gerar sua build na pasta 'dist/nome-do-seu-projeto'
         working-directory: ${{ env.ANGULAR_APP_DIR }} # <-- CORREÇÃO: Executa ng build em src/frontend/app
         # O comando 'ng build' irá gerar sua build na pasta 'src/frontend/app/dist/nome-do-seu-projeto'
