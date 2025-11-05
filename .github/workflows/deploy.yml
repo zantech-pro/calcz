@@ -13,7 +13,7 @@ jobs:
 
      # Define o caminho base do projeto Angular (para não repetir)
     env:
-      ANGULAR_APP_DIR: src/frontend/calcz/browser
+      ANGULAR_APP_DIR: src/frontend/calcz
     
     steps:
       # 1. Checkout do código
