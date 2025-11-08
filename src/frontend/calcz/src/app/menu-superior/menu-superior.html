@@ -1,0 +1,60 @@
+<section>
+    <div class="z-0 flex mt-1 pt-2 pb-2 pl-5 pr-5 justify-between items-center rounded-4xl bg-[#F3EDF7] md:rounded" id="menuSuperior">
+
+        <div class="flex-col md:flex" id="menuEsquerdo">
+
+            <div class="" id="botaoMobile">
+                <svg class="md:hidden w-6 h-6 text-gray-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 14">
+                    <path d="M16 2H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <img class="hidden w-32 max-w-32 h-auto mt-3 cursor-pointer ring-2 ring-gray-300 md:block md:rounded-[100px] md:w-16" src="calcz_logo.png" alt="logo Calc Z">
+            </div>
+
+            <nav class="" id="menuDrop">
+                <!-- Dropdown menu -->
+                <div id="userDropdown" class="hidden absolute mt-3 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 md:block md:mt-0 md:w-auto md:top-5.5 md:left-1/2 md:-translate-x-1/2 md:divide-y-0">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 md:flex" aria-labelledby="avatarButton">
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white md:border-r md:border-r-gray-200">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white md:border-r md:border-r-gray-200">Historico</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white md:border-r md:border-r-gray-200">Meus Dados</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sobre</a>
+                        </li>
+                    </ul>
+                    <div class="py-1 justify-items-center md:hidden">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="md:hidden" id="menuMeio">Title</div>
+
+        <div class="" id="avatar">
+            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 p-1 rounded-full cursor-pointer  ring-3 ring-emerald-500 hover:opacity-50 md:w-15 md:h-15" src="https://recreio.com.br/wp-content/uploads/filmes/avatar_capa_yvQczfI.jpg" alt="User dropdown">
+
+            <!-- Dropdown menu -->
+            <div id="userDropdown" class="hidden absolute mt-1 right-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                    <div>Bonnie Green</div>
+                    <div class="font-medium truncate">name@dominio.com</div>
+                </div>
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
+                    <li>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Meus Dados</a>
+                    </li>
+                </ul>
+                <div class="py-1">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

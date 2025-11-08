@@ -3,11 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-menu-superior',
   imports: [],
-  template: `
-    <p>
-      menu-superior works!
-    </p>
-  `,
+  templateUrl: 'menu-superior.html',
   styleUrl: './menu-superior.css',
 })
 export class MenuSuperior {

@@ -3,11 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-menu-rodape',
   imports: [],
-  template: `
-    <p>
-      menu-rodape works!
-    </p>
-  `,
+  templateUrl: 'menu-rodape.html',
   styleUrl: './menu-rodape.css',
 })
 export class MenuRodape {
